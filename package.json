@@ -1,0 +1,18 @@
+{
+  "name": "gitter-workflow",
+  "version": "1.0.0",
+  "main": "gitter-workflow.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Andrew Newdigate <andrewn@datatribe.net> (http://about.me/andrewnewdigate)",
+  "license": "MIT",
+  "dependencies": {
+    "nodegit": "^0.14.1",
+    "rc": "^1.1.6",
+    "tentacles": "^0.6.0",
+    "yargs": "^4.8.1"
+  },
+  "devDependencies": {},
+  "description": ""
+}

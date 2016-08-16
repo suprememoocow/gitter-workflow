@@ -1,0 +1,23 @@
+#!/usr/bin/env node
+
+'use strict';
+
+var conf = require('rc')('gitter-workflow', {
+  token: null
+}, { });
+
+
+var argv = require('yargs')
+  .config(conf)
+  .option('token', {
+    alias: 't',
+    describe: 'Access token'
+  })
+  .version(function() {
+    return require('../package.json').version;
+  })
+  .commandDir('../commands')
+  .demand(1)
+  .strict()
+  .help()
+  .argv;
