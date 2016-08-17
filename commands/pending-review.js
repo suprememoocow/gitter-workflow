@@ -1,6 +1,6 @@
 'use strict';
 
-var NodeGit = require("nodegit");
+var runCommand = require('../lib/run-command');
 
 exports.command = 'pending-review'
 
@@ -13,12 +13,11 @@ exports.builder = function(yargs) {
   });
 };
 
-exports.handler = function (argv) {
-  NodeGit.Repository.open(".")
-    .then(function (repo) {
-      console.log(repo);
+exports.handler = runCommand(function (argv, context) {
+  return context.github.pullRequest.listForRepo(context.repoUrl, { query: { head: 'troupe:' + context.branch }})
+    .then(function(repos) {
+      if (repos.length === 0) throw new Error('Branch PR not found for ' + context.branch);
+      if (repos.length > 1) throw new Error('Multiple branches found for ' + context.branch)
+      console.log(repos[0].number);
     })
-    .catch(function(err) {
-      console.log(err);
-    })
-};
+});
