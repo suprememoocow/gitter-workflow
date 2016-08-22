@@ -2,9 +2,9 @@
 
 var runCommand = require('../lib/run-command');
 
-exports.command = 'pending-review'
+exports.command = 'accept-review'
 
-exports.describe = 'Set PR as pending-review'
+exports.describe = 'Accept a review'
 
 exports.builder = function(yargs) {
   return yargs.option('pr', {
@@ -16,6 +16,6 @@ exports.builder = function(yargs) {
 exports.handler = runCommand(function (argv, context, conf) {
   return context.getPullRequestNumber(argv.pr)
     .then(function(prNumber) {
-      return context.setWorkflowLabel(prNumber, 'pending review');
+      return context.setWorkflowLabel(prNumber, 'review complete');
     });
 });
