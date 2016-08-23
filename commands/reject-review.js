@@ -2,9 +2,9 @@
 
 var runCommand = require('../lib/run-command');
 
-exports.command = 'accept-review'
+exports.command = 'reject-review'
 
-exports.describe = 'Accept a review'
+exports.describe = 'Reject a review'
 
 exports.builder = function(yargs) {
   return yargs.option('pr', {
@@ -20,9 +20,9 @@ exports.handler = runCommand(function (argv, context, conf) {
     })
     .then(function(prNumber) {
       this.prNumber = prNumber;
-      return context.setWorkflowLabel(prNumber, 'review complete');
+      return context.setWorkflowLabel(prNumber, 'needs rework');
     })
     .then(function() {
-      return context.replaceReactions(this.prNumber, '+1');
+      return context.replaceReactions(this.prNumber, '-1');
     });
 });
