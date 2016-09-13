@@ -13,6 +13,7 @@ var argv = require('yargs')
     return require('../package.json').version;
   })
   .commandDir('../commands')
+  .recommendCommands()
   .demand(1)
   .help()
   .argv;

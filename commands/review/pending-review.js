@@ -1,17 +1,12 @@
 'use strict';
 
-var runCommand = require('../lib/run-command');
+var runCommand = require('../../lib/run-command');
 
-exports.command = 'pending-review'
+exports.command = 'request'
 
 exports.describe = 'Set PR as pending-review'
 
-exports.builder = function(yargs) {
-  return yargs.option('pr', {
-    alias: 'pull-request',
-    describe: 'Number of the pull request'
-  });
-};
+exports.builder = {};
 
 exports.handler = runCommand(function (argv, context, conf) {
   return context.getPullRequestNumber(argv.pr)
