@@ -115,7 +115,7 @@ exports.handler = runCommand(function (argv, context) {
         } else {
           labelLink = '[' + name + '](https://github.com/' + context.repoUrl + '/labels/' + name + ')'
         }
-        console.log("| " + labelLink + " | " + labelCount + "|");
+        console.log("| " + labelLink + " | " + labelCount + " |");
       })
 
     })
